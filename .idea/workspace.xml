@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7b380a46-7043-46bc-aaec-7d8f6de414ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/WebDelivery/.env" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/docker/nginx/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/docker/php-fpm/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/docker/php-fpm/php-ini-overrides.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/phpdocker/nginx/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/phpdocker/php-fpm/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/phpdocker/php-fpm/php-ini-overrides.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190327040256.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190327051357.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190327164836.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190328111028.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190329080402.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190330134502.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190331154732.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190331160110.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190401103949.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190401122908.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190401174514.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190402133834.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190403124919.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190403133510.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190403160718.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190404135239.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190404184848.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190404194032.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190409145713.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190410110926.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190411075005.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190411134905.php" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/delivery_dev/composer.json</pharConfigPath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebDelivery/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebDelivery/docker/apache/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebDelivery/docker/config/vhosts/sf4.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebDelivery/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="34" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="21" selection-start-column="20" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>applica</find>
+      <find>app</find>
+      <find>php.ini</find>
+      <find>gnupg1</find>
+      <find>wget</find>
+      <find>wwwroot</find>
+      <find>sf4</find>
+      <find>jpeg</find>
+      <find>runtimeDeps</find>
+      <find>BZip2</find>
+      <find>sf4_php</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/WebDelivery" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/delivery_dev/docker/php-fpm/Dockerfile" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/nginx/nginx.conf" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/apache-php/Dockerfile" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/apache-php/apache_conf.conf" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/mysql/Dockerfile" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker-compose.prod.yml" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3/apache_conf.conf" />
+        <option value="$PROJECT_DIR$/delivery_dev/.env" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/docker-compose.prod.yml" />
+        <option value="$PROJECT_DIR$/delivery_dev/config/packages/security.yaml" />
+        <option value="$PROJECT_DIR$/delivery_dev/config/packages/doctrine.yaml" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3/Dockerfile" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker/config/vhosts/sf4.conf" />
+        <option value="$PROJECT_DIR$/delivery_dev/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/delivery_dev/Makefile" />
+        <option value="$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml" />
+        <option value="$PROJECT_DIR$/WebDelivery/config/packages/security.yaml" />
+        <option value="$PROJECT_DIR$/WebDelivery/docker/php-fpm-7.1.3/Dockerfile" />
+        <option value="$PROJECT_DIR$/WebDelivery/.env" />
+        <option value="$PROJECT_DIR$/WebDelivery/docker/config/vhosts/sf4.conf" />
+        <option value="$PROJECT_DIR$/WebDelivery/Makefile" />
+        <option value="$PROJECT_DIR$/WebDelivery/docker-compose.yml" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/beberlei/DoctrineExtensions" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/composer" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/easycorp/easy-log-handler" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/facebook/webdriver" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/reflection" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/profiler-pack" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/test-pack" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/onurb/excel-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/serializer-pack" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/panther" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/orm-pack" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/debug-pack" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/delivery_dev/vendor/ocramius/proxy-manager" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1920" />
+    <option name="y" value="-2" />
+    <option name="width" value="1920" />
+    <option name="height" value="1082" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="new" type="b2602c69:ProjectViewProjectNode" />
+              <item name="new" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="new" type="b2602c69:ProjectViewProjectNode" />
+              <item name="new" type="462c0819:PsiDirectoryNode" />
+              <item name="WebDelivery" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/WebDelivery" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WebDelivery" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3" />
+      <recent name="$PROJECT_DIR$/delivery_dev/docker" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WebDelivery" />
+      <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm" />
+      <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b380a46-7043-46bc-aaec-7d8f6de414ce" name="Default Changelist" comment="" />
+      <created>1557228878242</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557228878242</updated>
+      <workItem from="1557228879384" duration="9036000" />
+      <workItem from="1557291929785" duration="14753000" />
+      <workItem from="1557309939178" duration="4890000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="28679000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.17022412" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.4994664" visible="true" weight="0.3210913" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50053364" side_tool="true" weight="0.3210913" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.32843652" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" weight="0.32948583" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16862327" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.4994664" visible="true" weight="0.3210913" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50053364" side_tool="true" weight="0.3210913" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" weight="0.3297414" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/delivery_dev/README.md" />
+    <entry file="file://$USER_HOME$/docker-traning/docker/php/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/docker/apache-php/apache_conf.conf" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/docker/apache-php/Dockerfile" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/docker/mysql/Dockerfile" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3/apache_conf.conf" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3/php.ini" />
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm/php-ini-overrides.ini">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/nginx/nginx.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/docker/docker-compose.prod.yml" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/framework.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/validator.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/doctrine.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3/php-fpm-pool.conf" />
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/docker/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm-7.1.3/php-ini-overrides.ini">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm-7.1.3/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="20" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/config/vhosts/sf4.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/apache/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
