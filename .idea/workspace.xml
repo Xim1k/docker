@@ -2,40 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b380a46-7043-46bc-aaec-7d8f6de414ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/WebDelivery/.env" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/WebDelivery/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/docker/nginx/nginx.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/docker/php-fpm/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/docker/php-fpm/php-ini-overrides.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/phpdocker/nginx/nginx.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/phpdocker/php-fpm/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/phpdocker/php-fpm/php-ini-overrides.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190327040256.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190327051357.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190327164836.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190328111028.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190329080402.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190330134502.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190331154732.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190331160110.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190401103949.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190401122908.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190401174514.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190402133834.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190403124919.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190403133510.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190403160718.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190404135239.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190404184848.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190404194032.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190409145713.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190410110926.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190411075005.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebDelivery/src/Migrations/Version20190411134905.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,56 +16,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebDelivery/Makefile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="330">
+              <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            <state relative-caret-position="75">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebDelivery/docker/apache/Dockerfile">
+        <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.prod.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebDelivery/docker/config/vhosts/sf4.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebDelivery/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="34" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" selection-start-column="20" selection-end-column="21" />
+            <state relative-caret-position="405">
+              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -120,7 +61,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/WebDelivery" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -141,13 +82,14 @@
         <option value="$PROJECT_DIR$/delivery_dev/docker/config/vhosts/sf4.conf" />
         <option value="$PROJECT_DIR$/delivery_dev/docker-compose.yml" />
         <option value="$PROJECT_DIR$/delivery_dev/Makefile" />
-        <option value="$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml" />
         <option value="$PROJECT_DIR$/WebDelivery/config/packages/security.yaml" />
         <option value="$PROJECT_DIR$/WebDelivery/docker/php-fpm-7.1.3/Dockerfile" />
         <option value="$PROJECT_DIR$/WebDelivery/.env" />
         <option value="$PROJECT_DIR$/WebDelivery/docker/config/vhosts/sf4.conf" />
-        <option value="$PROJECT_DIR$/WebDelivery/Makefile" />
+        <option value="$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml" />
+        <option value="$PROJECT_DIR$/WebDelivery/docker-compose.prod.yml" />
         <option value="$PROJECT_DIR$/WebDelivery/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/WebDelivery/Makefile" />
       </list>
     </option>
   </component>
@@ -264,10 +206,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="-2" />
-    <option name="width" value="1920" />
-    <option name="height" value="1082" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="1853" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -287,6 +229,19 @@
               <item name="new" type="462c0819:PsiDirectoryNode" />
               <item name="WebDelivery" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="new" type="b2602c69:ProjectViewProjectNode" />
+              <item name="new" type="462c0819:PsiDirectoryNode" />
+              <item name="WebDelivery" type="462c0819:PsiDirectoryNode" />
+              <item name="docker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="new" type="b2602c69:ProjectViewProjectNode" />
+              <item name="new" type="462c0819:PsiDirectoryNode" />
+              <item name="WebDelivery" type="462c0819:PsiDirectoryNode" />
+              <item name="docker" type="462c0819:PsiDirectoryNode" />
+              <item name="apache" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -295,22 +250,24 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/WebDelivery" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WebDelivery" />
+      <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm" />
+      <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/WebDelivery" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3" />
       <recent name="$PROJECT_DIR$/delivery_dev/docker" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/WebDelivery" />
-      <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm" />
-      <recent name="$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -337,12 +294,13 @@
       <updated>1557228878242</updated>
       <workItem from="1557228879384" duration="9036000" />
       <workItem from="1557291929785" duration="14753000" />
-      <workItem from="1557309939178" duration="4890000" />
+      <workItem from="1557309939178" duration="6379000" />
+      <workItem from="1557725072055" duration="3329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28679000" />
+    <option name="totallyTimeSpent" value="33497000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -354,12 +312,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.17022412" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.17210847" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.4994664" visible="true" weight="0.3210913" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.4994664" visible="true" weight="0.32073435" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50053364" side_tool="true" weight="0.3210913" />
       <window_info anchor="bottom" id="Version Control" order="3" />
@@ -403,7 +362,7 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/delivery_dev/README.md" />
-    <entry file="file://$USER_HOME$/docker-traning/docker/php/Dockerfile">
+    <entry file="file://$PROJECT_DIR$/../docker-traning/docker/php/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="22" />
@@ -418,13 +377,7 @@
     <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm/php-ini-overrides.ini">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/delivery_dev/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/.env" />
     <entry file="file://$PROJECT_DIR$/WebDelivery/docker/nginx/nginx.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -433,26 +386,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/delivery_dev/docker/docker-compose.prod.yml" />
-    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/framework.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/validator.yaml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/doctrine.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/security.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/framework.yaml" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/validator.yaml" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/doctrine.yaml" />
+    <entry file="file://$PROJECT_DIR$/delivery_dev/config/packages/security.yaml" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -464,14 +401,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/delivery_dev/docker/php-fpm-7.1.3/php-fpm-pool.conf" />
-    <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/docker/Makefile">
+    <entry file="file://$PROJECT_DIR$/../docker/Makefile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
@@ -488,31 +418,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebDelivery/docker/php-fpm-7.1.3/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebDelivery/docker/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebDelivery/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -530,10 +439,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebDelivery/Makefile">
+    <entry file="file://$PROJECT_DIR$/WebDelivery/config/packages/doctrine_migrations.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/config/packages/doctrine.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="165">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/.env.test">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -546,8 +468,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        <state relative-caret-position="75">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/docker-compose.prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebDelivery/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
         </state>
       </provider>
     </entry>
