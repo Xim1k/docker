@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}История заказов{% endblock %}
+
+{% block body %}
+    <div class="row" id="row-body">
+        {{ include('account/account_menu.html.twig') }}
+        <div class="col">
+            <div class="container-fluid" style="padding: 0;">
+                <div class="profile-wrapper" style="padding: 0;">
+                    {% if orders|default(false) != false %}
+                        <div class="accordion" id="accordionExample">
+                        {% for item in orders %}
+                                <div class="card">
+                                    <div class="card-header" id="heading{{ item.getId() }}">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link order-history-btn" type="button" data-toggle="collapse" data-target="#collapse{{ item.getId() }}" aria-expanded="true" aria-controls="collapse{{ item.getId() }}">
+                                                {{ item.getAddress() }}, {{ item.getCreatedAt()|date('Y-m-d') }}
+                                            </button>
+                                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_WAIT') %}
+                                                    <span class="badge badge-secondary order-status">Ожидает подтверждения</span>
+                                                {% endif %}
+                                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_CANCEL') %}
+                                                    <span class="badge badge-danger order-status">Отменен</span>
+                                                {% endif %}
+                                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_ACCEPT') %}
+                                                    <span class="badge badge-info order-status">Подтвержден</span>
+                                                {% endif %}
+                                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_DONE') %}
+                                                    <span class="badge badge-success order-status">Выполнен</span>
+                                                {% endif %}
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapse{{ item.getId() }}" class="collapse" aria-labelledby="heading{{ item.getId() }}" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="order-history-header">
+                                                <h4>Заказ №{{ item.getId() }}</h4>
+                                            </div>
+                                            <div class="order-history-content">
+                                                <div class="order-history-content-address">
+                                                    Адрес доставки: {{ item.getAddress() }}
+                                                </div>
+                                                <div class="order-history-content-phone">
+                                                    Телефон для связи: {{ item.getPhone() }}
+                                                </div>
+                                                <div class="order-history-content-product">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Название</th>
+                                                            <th scope="col">Цена, руб</th>
+                                                            <th scope="col">Кол-во</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for product in item.getCheckoutProducts() %}
+                                                            <tr>
+                                                                <th scope="col">{{ loop.index }}</th>
+                                                                <th scope="col">{{ product.getProduct().getName() }}</th>
+                                                                <th scope="col">{{ product.getProduct().getPrice() }}</th>
+                                                                <th scope="col">{{ product.getCount() }}</th>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="order-history-content-cost">
+                                                    Общая стоимость: {{ item.getCost() }} руб
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                </div>
+                        {% endfor %}
+                            <div class="row">
+                                <div class="col">
+                                    <nav>
+                                        <ul class="pagination justify-content-center">
+                                            <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                                                <a class="page-link" href="{{ path('myhistory', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                                            </li>
+
+                                            {% for i in 1..maxPages %}
+                                                {% if i > 0 %}
+                                                    <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                                        <a class="page-link" href="{{ path('myhistory', {page: i}) }}">{{ i }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                            <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                                <a class="page-link" href="{{ path('myhistory', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                    {% else %}
+                        <div id="page-content-wrapper">
+                            <div class="container-fluid" style="margin: 15px">
+                                <h3>У вас ещё нет заказов</h3>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

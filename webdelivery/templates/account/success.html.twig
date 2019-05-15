@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Успешно{% endblock %}
+{% block body %}
+    <div class="d-flex" id="wrapper">
+        {{ include('account/account_menu.html.twig') }}
+        <div id="page-content-wrapper">
+            <div class="container-fluid width-all-green">
+                    <div class="success">{{ message }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

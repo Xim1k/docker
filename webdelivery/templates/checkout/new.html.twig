@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Создание заказа {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-item-center mb-3">
+                {% set totalSum = 0 %}
+                {% set totalCount = 0 %}
+                {% for item in checkout.checkoutProducts() %}
+                    {% set totalCount = item.count + totalCount ?? 0 %}
+                    {% set totalSum = item.product.price*item.count + totalSum ?? 0 %}
+                {% endfor %}
+                <span class="text-muted">Ваша корзина</span>
+                <span class="badge badge-secondary badge-pill">{{ totalCount }}</span>
+            </h4>
+            <ul class="list-group mb-3">
+                {% for item in checkout.checkoutproducts %}
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">{{ item.product.name }}</h6>
+                        <small class="text-muted">
+                        {% if item.product.description|length > 40 %}
+                            {{ item.product.description[:40] }}...
+                        {% else %}
+                            {{ item.product.description }}
+                        {% endif %}
+                        </small>
+                    </div>
+                    <span class="text-muted">{{ item.count }}&nbsp;x&nbsp;{{ item.product.price }}&nbsp;₽</span>
+                </li>
+            {% endfor %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Сумма</span>
+                    <strong>{{ totalSum }}&nbsp;₽</strong>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Информация о заказе</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                <label for="firstName">Имя</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="{{ checkout.getUser().getName() }}" readonly>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="lastName">Фамилия</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="{{ checkout.getUser().getSurname() }}" readonly>
+            </div>
+            </div>
+            {{ form_start(form) }}
+            <div class="mb-3">
+                {{ form_label(form.address, 'Адрес доставки' ) }}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="icon ion-md-navigate"></i>
+                        </span>
+                    </div>
+                {{ form_widget(form.address, {'attr': {'class': 'form-control', 'placeholder': 'Адрес'}}) }}
+                {{ form_errors(form.address, {'attr': {'class': 'invalid-feedback'}}) }}
+                </div>
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.phone, 'Номер телефона' ) }}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="icon ion-md-call"></i>
+                        </span>
+                    </div>
+                {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'placeholder': '+7 (999) 888-77-66'}}) }}
+                {{ form_errors(form.phone, {'attr': {'class': 'invalid-feedback'}}) }}
+                </div>
+            </div>
+            <button class="btn btn-primary">{{ button_label|default('Сохранить') }}</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script src="https://api-maps.yandex.ru/2.1/?apikey=8d36ed54-0fd4-4fe0-9be9-bc5dfba1c6c7&lang=ru_RU" type="text/javascript">
+</script>
+<script type="text/javascript">
+    ymaps.ready(init);
+
+    function init() {
+        let suggestView = new ymaps.SuggestView('checkout_address');
+    }
+</script>
+{% endblock %}

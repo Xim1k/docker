@@ -1,0 +1,200 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}История заказов{% endblock %}
+
+{% block body %}
+    <div class="row" id="row-body">
+    {{ include('account/account_menu.html.twig') }}
+    <div class="col">
+        <div class="container-fluid" style="padding: 0;">
+            <div class="profile-wrapper" style="padding: 0;">
+                {% if orders|default(false) != false %}
+                <div class="accordion" id="accordionExample">
+                    {% for item in orders %}
+                    <!-- beginning of the card -->
+                    <div class="card">
+                        <div class="card-header" id="heading{{ item.getId() }}">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link order-history-btn" type="button" data-toggle="collapse" data-target="#collapse{{ item.getId() }}" aria-expanded="true" aria-controls="collapse{{ item.getId() }}">
+                                    {{ item.getAddress() }}, {{ item.getCreatedAt()|date('Y-m-d') }}
+                                </button>
+                                <!-- span block start -->
+                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_WAIT') %}
+                                    <span class="badge badge-secondary order-status" id="order-status-snap-{{ item.getId() }}" >Ожидает подтверждения</span>
+                                {% endif %}
+                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_CANCEL') %}
+                                    <span class="badge badge-danger order-status">Отменен</span>
+                                {% endif %}
+                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_ACCEPT') %}
+                                    <span class="badge badge-info order-status">Подтвержден</span>
+                                {% endif %}
+                                {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_DONE') %}
+                                    <span class="badge badge-success order-status">Выполнен</span>
+                                {% endif %}
+                                <!-- span block end -->
+                            </h2>
+                        </div>
+
+                        <!-- Card body start -->
+                        <div id="collapse{{ item.getId() }}" class="collapse" aria-labelledby="heading{{ item.getId() }}" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <!-- Header of the card-content -->
+                                <div class="order-history-header">
+                                    <h4>Заказ №{{ item.getId() }}</h4>
+                                </div>
+                                <!-- Card-content -->
+                                <div class="order-history-content">
+                                    <div class="d-flex order-history-content-duo">
+                                        <div>
+                                            <div class="order-history-content-address">
+                                                Адрес доставки: {{ item.getAddress() }}
+                                            </div>
+                                            <div class="order-history-content-phone">
+                                                Телефон для связи: {{ item.getPhone() }}
+                                            </div>
+                                        </div>
+                                        <div class="order-history-content-btn">
+                                        <!-- Display or not button "submit" -->
+                                        {% if item.getStatus() == constant('App\\Entity\\Checkout::STATUS_WAIT') %}
+                                            <button type="button" class="btn btn-success ajax-accept order-history-btn-{{ item.getId() }}" data-id="{{ item.getId() }}">Submit</button>
+                                            <button type="button" class="btn btn-danger ajax-cancel order-history-btn-{{ item.getId() }}"  data-id="{{ item.getId() }}">Cancel</button>
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                    <!-- Products in order -->
+                                    <div class="order-history-content-product">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Название</th>
+                                                <th scope="col">Цена, руб</th>
+                                                <th scope="col">Кол-во</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for product in item.getCheckoutProducts() %}
+                                                <tr>
+                                                    <th scope="col">{{ loop.index }}</th>
+                                                    <th scope="col">{{ product.getProduct().getName() }}</th>
+                                                    <th scope="col">{{ product.getProduct().getPrice() }}</th>
+                                                    <th scope="col">{{ product.getCount() }}</th>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="order-history-content-cost">
+                                        Общая стоимость: {{ item.getCost() }} руб
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card body end -->
+                        </div>
+                        <!-- end of the card -->
+                        </div>
+                        {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('seller_orders', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                                    </li>
+
+                                    {% for i in 1..maxPages %}
+                                        {% if i > 0 %}
+                                            <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                                <a class="page-link" href="{{ path('seller_orders', {page: i}) }}">{{ i }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('seller_orders', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    {% else %}
+                        <!-- if there is no products -->
+                        <div id="page-content-wrapper">
+                            <div class="container-fluid" style="margin:15px">
+                                <h3>У вас ещё нет заказов</h3>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        {% block javascripts %}
+        {{ parent() }}
+        <script type="text/javascript">
+            // Accept button function
+            $(document).on('click', 'button.ajax-accept', function(){
+                if (confirm('Вы уверены') === true)
+                    {
+                        let id = $(this).data('id');
+                        $.ajax({
+                            url:'{{ (path('seller_orders_submit')) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "id": id
+                            },
+                            async: true,
+                            success: function ()
+                            {
+                                let div_id = '#collapse' + id;
+                                let span_id = '#order-status-snap-' + id;
+                                let but_class = '.order-history-btn-' + id;
+                                $(div_id).collapse('hide');
+                                $(but_class).each(function () {
+                                    $(this).css({'display' : 'none'});
+                                });
+                                $(span_id).removeClass('badge-secondary').addClass('badge-info');
+                                $(span_id).text('Подтвержден')
+                            },
+                            error: function (error) {
+                                alert(error['message'])
+                            }
+                        });
+                    }
+            });
+
+            // Cancel button function
+            $(document).on('click', 'button.ajax-cancel', function(){
+                if (confirm('Вы уверены') === true)
+                {
+                    let id = $(this).data('id');
+                    $.ajax({
+                        url:'{{ (path('seller_orders_cancel')) }}',
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "id": id
+                        },
+                        async: true,
+                        success: function ()
+                        {
+                            let div_id = '#collapse' + id;
+                            let span_id = '#order-status-snap-' + id;
+                            let but_class = '.order-history-btn-' + id;
+                            $(div_id).collapse('hide');
+                            $(but_class).each(function () {
+                                $(this).detach();
+                            });
+                            $(span_id).removeClass('badge-secondary').addClass('badge-danger');
+                            $(span_id).text('Отменен')
+                        },
+                        error: function (error) {
+                            alert(error['message'])
+                        }
+                    });
+                }
+            });
+        </script>
+    {% endblock %}

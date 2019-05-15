@@ -1,0 +1,395 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+{% include('includes/shopping_cart.html.twig') %}
+{% include('includes/product_show.html.twig') %}
+
+<div class="row">
+    <div class="col-lg-12">
+        {# Search products #}
+        <div class="row">
+            <div class="col">
+                <form action="{{ path('product_index', {'id' : app.request.get('id')}) }}">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend" id="sellers">
+                            <a href="{{ path('index') }}" class="btn btn-primary" id="modalSellerhref">
+                                <b>{{ seller.name }}</b> 
+                                <i class="icon ion-md-arrow-round-down"></i>
+                            </a>
+                        </div>
+                        <input type="hidden" value="{{ app.request.get('category') }}" name="category">
+                        <input type="text" class="form-control" value="{{app.request.get('query')}}" name="query" placeholder="Поиск в магазине {{ seller.name }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-secondary">
+                                <i class="icon ion-md-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-primary" id="shopping-cart_open" href="#">
+                    <i class="icon ion-md-cart"></i>
+                    Корзина
+                    <div id="shopping-cart_total-count">27</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="list-group">
+            <a href="{{ path('product_index', { page: thisPage, query: app.request.get('query'), category: null, id: app.request.get('id')}) }}" class="list-group-item {{ app.request.get('category') == '' ? 'list-group-selected' : 'list-group-not-selected'}}">Все продукты</a>
+            {% for category in categories %}
+                <a href="{{ path('product_index', { page: thisPage, query: app.request.get('query'), category: category.getId(), id: app.request.get('id')}) }}" class="list-group-item {{ app.request.get('category') == category.id ? 'list-group-selected' : 'list-group-not-selected' }}">{{ category.getName() }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    {# Products cards #}
+    <div class="col-lg-9">
+
+        <div class="row">
+        {% for product in products %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100" id="product">
+                    <a href="#"><img class="card-img-top product-image" src="{{ asset('uploads/product_images/' ~ product.image) }}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#" onclick="showProduct({{ product.id }})" class="product-name">{{ product.name }}</a>
+                        </h4>
+                        <p class="card-text product-description">
+                        {% if product.description|length > 50 %}
+                            {{ product.description[:50] }}...
+                        {% else %}
+                            {{ product.description }}
+                        {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <span class="text-muted product-price">{{ product.price }} Р</span>
+                        <button class="btn btn-add btn-sm btn-outline-secondary" id="{{ product.id }}">В корзину</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <div class="row justify-content-md-center">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                        <a class="page-link" href="{{ path('product_index', {page: thisPage-1 < 1 ? 1 : thisPage-1, query: app.request.get('query'), 'id' : app.request.get('id'), category: app.request.get('category')}) }}">«</a>
+                    </li>
+
+                    {% for i in 1..maxPages %}
+                        {% if i > 0 %}
+                            <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                <a class="page-link" href="{{ path('product_index', {page: i, query: app.request.get('query'), 'id' : app.request.get('id'), category: app.request.get('category')}) }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                        <a class="page-link" href="{{ path('product_index', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage, query: app.request.get('query'), 'id' : app.request.get('id'), category: app.request.get('category')}) }}">»</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="map" style="display: none"></div>
+    </div>
+
+</div>
+    {{ include('includes/modal_seller.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        let d = document,
+            addButtons = d.querySelectorAll('.btn-add'),
+            cartCont = d.getElementById('shopping-cart_list'),
+            hiddenPrice = 0
+
+        const addEvent = (elem, type, handler) => {
+            if(elem.addEventListener){
+                elem.addEventListener(type, handler, false);
+            } else {
+                elem.attachEvent('on'+type, () => { handler.call( elem ) })
+            }
+            return false;
+        }
+
+        const getCartData = () => JSON.parse(localStorage.getItem('cart'))
+
+        const setCartData = (o) => {
+            localStorage.setItem('cart', JSON.stringify(o))
+        }
+
+        const delFromCart = e => {
+            let cartData = getCartData() || {},
+                id = e.target.parentNode.id
+
+            delete cartData[id]
+
+            setCartData(cartData)
+            updateCartContent()
+            updateTotalCount()
+            return false
+        }
+
+        const delButtonTitleChange = e => {
+            let element = e.target
+            if (e.type == 'mouseout') {
+                element.innerHTML = hiddenPrice
+            } else {
+                hiddenPrice = element.innerHTML
+                element.innerHTML = 'Удалить'
+            }
+        }
+
+        const updateCartContent = () => {
+            let cartData = getCartData(),
+                totalItems = '',
+                totalSum = 0,
+                totalCount = 0
+
+            if(cartData !== null){
+                totalItems = `<table class="table">
+                                <tbody id="shopping-cart_content">`
+                for(let item in cartData){
+                    totalItems += `<tr id="${item}">
+                                    <input type="hidden" id="${item}">
+                                    <td><img width="80px" src="${cartData[item][1]}"></td>
+                                    <td><b>${cartData[item][2]}</b><br><small>${cartData[item][3]}</smal></td>
+                                    <td>${cartData[item][0]}</td>
+                                    <td>x</td>
+                                    <td class="btn-del">${cartData[item][4]}</td>
+                                    </tr>`
+                    totalCount += parseInt(cartData[item][0])
+                    totalSum += parseInt(cartData[item][4]) * parseInt(cartData[item][0])
+                }
+                totalItems += `</tbody>
+                            </table>`
+                cartCont.innerHTML = totalItems
+            } else {
+                totalCount = 0
+            }
+
+            if (totalCount == 0) {
+                cartCont.innerHTML = 'Корзина пуста'
+            }
+
+            d.getElementById('shopping-cart_total').innerHTML = totalSum + ' P'
+
+            let delButtons = d.querySelectorAll('.btn-del')
+            for(var i = 0; i < delButtons.length; i++){
+                addEvent(delButtons[i], 'click', delFromCart)
+                addEvent(delButtons[i], 'mouseover', delButtonTitleChange)
+                addEvent(delButtons[i], 'mouseout', delButtonTitleChange)
+                delButtons[i].style.cursor = 'pointer'
+            }
+        }
+
+        const addToCart = e => {
+            let cartData = getCartData() || {},
+                id = e.target.id,
+                item = e.target.parentNode.parentNode,
+                img = item.querySelector('.product-image').src,
+                name = item.querySelector('.product-name').innerHTML,
+                price = item.querySelector('.product-price').innerHTML,
+                description = item.querySelector('.product-description').innerHTML
+
+            if(cartData.hasOwnProperty(id)){
+                cartData[id][0] += 1
+            } else {
+                cartData[id] = [1, img, name, description, price]
+            }
+            setCartData(cartData)
+            updateTotalCount()
+        }
+
+        const updateTotalCount = () => {
+            let cartData = getCartData(),
+                totalCount = 0
+
+            for(let item in cartData) {
+                totalCount += parseInt(cartData[item][0])
+            }
+
+            if (totalCount > 0){
+                d.getElementById('shopping-cart_total-count').style.display = 'block'
+                d.getElementById('shopping-cart_total-count').innerHTML = totalCount
+            } else {
+                d.getElementById('shopping-cart_total-count').style.display = 'none'
+            }
+        }
+
+        const openCart = () => {
+            updateCartContent()
+            $('#shopping-cart').modal('toggle')
+            return false
+        }
+
+        const sendCart = (e) => {
+            let cartData = getCartData() || {}
+            let sendData = {}
+            for (let id in cartData) {
+                sendData[id] = cartData[id][0]
+            }
+            $.ajax({
+                type: "POST",
+                url: '/checkout/cart',
+                data: {
+                    products: JSON.stringify(sendData),
+                },
+                datatype: "json"
+            })
+        }
+
+        for(var i = 0; i < addButtons.length; i++){
+            addEvent(addButtons[i], 'click', addToCart)
+        }
+
+        const showProduct = (id) => {
+            $('#product-modal').modal('toggle')
+            console.log('fdfsf')
+            $.ajax({
+                type: 'POST',
+                url: `/product/${id}`,
+                datatype: 'json',
+                async: true,
+                success: response => {
+                    const product = response['product']
+                    const imagePath = '{{ asset('uploads/product_images/') }}' + product['image']
+                    d.getElementById('product-modal__image').setAttribute('src', imagePath)
+                    d.getElementById('product-modal__name').innerHTML = product['name']
+                    d.getElementById('product-modal__image').innerHTML = product['name']
+                    d.getElementById('product-modal__description').innerHTML = product['description']
+                    d.getElementById('product-modal__price').innerHTML = product['price'] + ' P'
+                    d.getElementById('product-modal__category').innerHTML = product['category']
+                },
+                error: error => {
+                    alert('Произошла ошибка при загрузке товара')
+                }
+            })
+        }
+
+        addEvent(d.getElementById('shopping-cart_open'), 'click', openCart);
+        addEvent(d.getElementById('shopping-cart_send'), 'click', sendCart);
+
+        addEvent(d.getElementById('shopping-cart_clear'), 'click', e => {
+            localStorage.removeItem('cart')
+            d.getElementById('shopping-cart_list').innerHTML = 'Корзина пуста'
+            d.getElementById('shopping-cart_total').innerHTML = '0'
+            updateTotalCount()
+        })
+
+        updateTotalCount()
+    </script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=8d36ed54-0fd4-4fe0-9be9-bc5dfba1c6c7&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+
+        function init() {
+            let circle;
+            var myMap = new ymaps.Map("map", {
+                    center: [55.030199, 82.920430],
+                    zoom: 12
+                }, {
+                    searchControlProvider: 'yandex#search'
+                }),
+                objectManager = new ymaps.ObjectManager({
+                    // Мы хотим загружать данные для балуна перед открытием, поэтому
+                    // запретим автоматически открывать балун по клику.
+                    geoObjectOpenBalloonOnClick: false
+                });
+
+            $.ajax({
+                url:'{{ (path('index_points')) }}',
+                type: "POST",
+                dataType: "json",
+                async: true,
+                success: function (response)
+                {
+                    let myGeocoder;
+                    let firstGeoObject;
+                    let coordsSingle;
+                    let placemark;
+                    for (let key in response.addresses){
+                        myGeocoder = ymaps.geocode(response.addresses[key]['address'], {results: 1});
+                        myGeocoder.then(function (res) {
+                            firstGeoObject = res.geoObjects.get(0);
+                            coordsSingle = firstGeoObject.geometry.getCoordinates();
+                            placemark = new ymaps.Placemark(coordsSingle);
+                            myMap.geoObjects
+                                .add(new ymaps.Placemark(coordsSingle, {
+                                    balloonContent: response.addresses[key]['name'],
+                                    addressId: response.addresses[key]['id']
+                                }));
+                        }, function (err) {
+                            // Обработка ошибки.
+                        });
+                    }
+                    if (circle)
+                    {
+                        myMap.geoObjects.remove(circle);
+                    }
+                    myGeocoder = ymaps.geocode('{{ userAddress }}', {results: 1});
+                    myGeocoder.then(function (res) {
+                        let secondGeoObject = res.geoObjects.get(0);
+                        let coordsOne = secondGeoObject.geometry.getCoordinates();
+                        let ids = [];
+                        circle = new ymaps.Circle([coordsOne, 2500], null);
+                        myMap.geoObjects.add(circle);
+                        let objectsInsideCircle = ymaps.geoQuery(myMap.geoObjects).searchInside(circle);
+                        for (i = 0; i < objectsInsideCircle.getLength(); i++)
+                        {
+                            ids[i] = objectsInsideCircle.get(i).properties.get('addressId');
+                        }
+                        //вывод адреса
+                        $.ajax({
+                            url:'{{ (path('index_sellers')) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                'ids' : ids,
+                                'userAddress' : '{{ userAddress }}'
+                            },
+                            async: true,
+                            success: function (response)
+                            {
+
+                                console.log(response.sellers);
+                                $('#modal-body-cards').html('');
+                                for (key in response.sellers)
+                                {
+                                    $('#modalSellerhref').attr({
+                                        href: "#",
+                                        'data-toggle': "modal",
+                                        'data-target': "#modalSeller"
+                                    });
+                                    $('#modal-body-cards').append('<div class="d-flex justify-content-center ml-2 mr-2 mb-2 mt-2" id="modal-body-cards">\n' +
+                                        '        <div class="card card-href" style="width: 10rem; height: auto">\n' +
+                                        '            <a href="' + response.sellers[key]['path'] + '" class="card-href">' +
+                                        '               <div class="card-body pb-2 justify-content-center card-href">\n' +
+                                        '                   <h5 class="card-title">' + response.sellers[key]['name'] + '</h5>\n' +
+                                        '                </div></a>\n' +
+                                        '        </div>\n' +
+                                        '    </div></a>');
+                                }
+                            },
+                            error: function (error) {
+                            }
+                        });
+                    });
+                },
+                error: function (error) {
+                }
+            });
+        }
+    </script>
+{% endblock %}

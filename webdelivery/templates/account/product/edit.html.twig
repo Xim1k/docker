@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Изменить продукт{% endblock %}
+
+{% block body %}
+<div class="row" id="row-body">
+    {{ include('account/account_menu.html.twig') }}
+    <div class="col-lg-9">
+        <h3>Изменить продукт</h3>
+        {{ include('account/product/_form.html.twig', {'button_label': 'Сохранить'}) }}
+    </div>
+</div>
+{% endblock %}

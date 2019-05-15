@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Аккаунт{% endblock %}
+
+{% block body %}
+    <div class="row" id="row-body">
+    {{ include('admin/admin.menu.html.twig') }}
+    <div class="col">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{ path('admin_sellers') }}" method="GET">
+                <div class="row search-form">
+
+                    <div class="col-md-11">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="search" value="{{ app.request.get('search') }}" placeholder="Введите название компании">
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <button class="btn btn-primary border" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="profile-wrapper">
+            <div class="row dashboard-today">
+                <table class="table">
+                    <caption>Список продавцов</caption>
+                    <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Продавец</th>
+                        <th scope="col">Кол-во товаров</th>
+                        <th scope="col">Кол-во заказов</th>
+                        <th scope="col">#</th>
+                        <th scope="col">#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for seller in sellers %}
+                    <tr id="seller-{{ seller.getId() }}">
+                        <th scope="col">{{ seller.getId() }}</th>
+                        <th scope="col">{{ seller.getName }}</th>
+                        <th scope="col">{{ seller.getProducts().count }}</th>
+                        <th scope="col">{{ seller.getCheckouts().count }}</th>
+                        <th scope="col">
+                            <button class="btn btn-danger ajax-delete" id="seller-delete-{{ seller.getId }}" data-id="{{ seller.getId }}">
+                                Удалить
+                            </button>
+                        </th>
+                            <th scope="col">
+                                <a href="{{ path('admin_seller_view', { id: seller.getId() }) }}">
+                                    <button class="btn btn-primary" id="seller-view-{{ seller.getId }}">
+                                        Подробнее
+                                    </button>
+                                </a>
+                            </th>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                                <a class="page-link" href="{{ path('admin_sellers', {page: thisPage-1 < 1 ? 1 : thisPage-1, search: app.request.get('search')}) }}">«</a>
+                            </li>
+
+                            {% for i in 1..maxPages %}
+                                {% if i > 0 %}
+                                    <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                        <a class="page-link" href="{{ path('admin_sellers', {page: i, search: app.request.get('search')}) }}">{{ i }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+
+                            <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                <a class="page-link" href="{{ path('admin_sellers', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage, search: app.request.get('search')}) }}">»</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            <script type="text/javascript">
+                 $(document).on('click', '.ajax-delete', function(){
+                if (confirm('Вы уверены') === true)
+                    {
+                        let id = $(this).data('id');
+                        $.ajax({
+                            url:'{{ (path('admin_seller_delete')) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "id": id
+                            },
+                            async: true,
+                            success: function (response)
+                            {
+                                let but = "#seller-" + id;
+                                $(but).detach();
+                            },
+                            error: function (error) {
+                                alert(error['message'])
+                            }
+                        });
+                    }
+            });
+            </script>
+        {% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Продукты{% endblock %}
+
+{% block body %}
+<div class="row" id="row-body">
+    {{ include('account/account_menu.html.twig') }}
+    <div class="col-lg-9">
+        <h3>Список продуктов</h3>
+        {# Search products #}
+        <div class="row">
+            <div class="col">
+                <form action="{{ path('seller_product_list') }}">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="{{app.request.get('query')}}" name="query" placeholder="Поиск">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-secondary">
+                                <i class="icon ion-md-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {# Cards with products #}
+        <div class="row">
+        {% for product in products %}
+            <div class="col-lg-4 col-md-6 mb-4" id="product-{{ product.id }}">
+                <div class="card h-100" id="product">
+                    <div class="product__control">
+                        <a class="product__control__edit" href="{{ path('seller_product_edit', {'id': product.id}) }}">
+                                <i class="icon ion-md-create"></i>
+                        </a>
+                        {{ include('account/product/_delete_form.html.twig') }}
+                    </div>
+                    <a href="#"><img class="card-img-top product-image" src="{{ asset('uploads/product_images/' ~ product.image) }}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#" class="product-name">{{ product.name }}</a>
+                        </h4>
+                        <h5 class="product-price">{{ product.price }}</h5>
+                        <p class="card-text product-description">
+                        {% if product.description|length > 100 %}
+                            {{ product.description[:100] }}...
+                        {% else %}
+                            {{ product.description }}
+                        {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        {# Pagination #}
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                            <a class="page-link" href="{{ path('seller_product_list', {page: thisPage-1 < 1 ? 1 : thisPage-1, query: app.request.get('query')}) }}">«</a>
+                        </li>
+
+                        {% for i in 1..maxPages %}
+                            {% if i > 0 %}
+                                <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                    <a class="page-link" href="{{ path('seller_product_list', {page: i, query: app.request.get('query')}) }}">{{ i }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                            <a class="page-link" href="{{ path('seller_product_list', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage, query: app.request.get('query')}) }}">»</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+{#
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).on('click', '.product-delete', function(){
+            if (confirm('Вы уверены') === true)
+            {
+                let id = $(this).data('id');
+                $.ajax({
+                    url:'{{ (path('seller_product_delete')) }}',
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "id": id
+                    },
+                    async: true,
+                    success: function (response)
+                    {
+                        let but = "#product-" + id;
+                        $(but).detach();
+                    },
+                    error: function (error) {
+                        alert(error['message'])
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}
+#}

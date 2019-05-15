@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Доставка еды{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col-8 white-box shadow-sm p-5 mt-5">
+            <div class="row">
+                <img class="mb-2 align-self-center" width="100px" height="100px" src="{{ asset('img/' ~ 'logo.svg') }}">
+                <div class="col">
+                    <h1 class="text-logo">Web Delivery</h1>
+                    <p class="text-muted">Быстрее, чем вы скажете "вишневый пирог"</p>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button class="btn btn-primary" id="get_location_address">
+                        <i class="icon ion-md-navigate"></i>
+                    </button>
+                </div>
+                <input class="form-control" id="geocomplete" type="text" placeholder="Введите ваш адрес" value="{{ userAddress }}">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary ajax-select">Выбрать</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 white-box shadow-sm p-5 mt-4 mb-5">
+            <div id="map" style="width: 100%; height: 500px"></div>
+        </div>
+    </div>
+
+    {% include('includes/modal_seller.html.twig') %}
+    
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=8d36ed54-0fd4-4fe0-9be9-bc5dfba1c6c7&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+
+        function init() {
+            let circle;
+            var myMap = new ymaps.Map("map", {
+                center: [55.030199, 82.920430],
+                zoom: 12
+            }, {
+                searchControlProvider: 'yandex#search'
+            }),
+                objectManager = new ymaps.ObjectManager({
+                    // Мы хотим загружать данные для балуна перед открытием, поэтому
+                    // запретим автоматически открывать балун по клику.
+                    geoObjectOpenBalloonOnClick: false
+                });
+            let suggestView = new ymaps.SuggestView('geocomplete');
+            let idsArray
+
+            $.ajax({
+                url:'{{ (path('index_points')) }}',
+                type: "POST",
+                dataType: "json",
+                async: true,
+                success: function (response)
+                {
+                    let myGeocoder;
+                    let firstGeoObject;
+                    let coordsSingle;
+                    let placemark;
+                    for (let key in response.addresses){
+                        myGeocoder = ymaps.geocode(response.addresses[key]['address'], {results: 1});
+                        myGeocoder.then(function (res) {
+                            firstGeoObject = res.geoObjects.get(0);
+                            coordsSingle = firstGeoObject.geometry.getCoordinates();
+                            placemark = new ymaps.Placemark(coordsSingle);
+                            myMap.geoObjects
+                                .add(new ymaps.Placemark(coordsSingle, {
+                                    balloonContent: response.addresses[key]['name'],
+                                    addressId: response.addresses[key]['id']
+                                }));
+                        }, function (err) {
+                            // Обработка ошибки.
+                        });
+                    }
+                },
+                error: function (error) {
+                }
+            });
+
+            $('.ajax-select').click(() => {
+                if (circle)
+                {
+                    myMap.geoObjects.remove(circle);
+                }
+                let myGeocoder = ymaps.geocode($('#geocomplete').val(), {results: 1});
+                myGeocoder.then(function (res) {
+                    let secondGeoObject = res.geoObjects.get(0);
+                    let coordsOne = secondGeoObject.geometry.getCoordinates();
+                    let ids = [];
+                    circle = new ymaps.Circle([coordsOne, 2500], null);
+                    myMap.geoObjects.add(circle);
+                    let objectsInsideCircle = ymaps.geoQuery(myMap.geoObjects).searchInside(circle);
+                    for (i = 0; i < objectsInsideCircle.getLength(); i++)
+                    {
+                        ids[i] = objectsInsideCircle.get(i).properties.get('addressId');
+                    }
+                    console.log(ids);
+                    $.ajax({
+                        url:'{{ (path('index_sellers')) }}',
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            'ids' : ids,
+                            'userAddress' : $('#geocomplete').val()
+                        },
+                        async: true,
+                        success: function (response)
+                        {
+                            $('#modal-body-cards').html('');
+                            for (key in response.sellers)
+                            {
+                                $('#modal-body-cards').append('<div class="d-flex justify-content-center ml-2 mr-2 mb-2 mt-2" id="modal-body-cards">\n' +
+                                    '        <div class="card card-href" style="width: 10rem; height: auto">\n' +
+                                    '            <a href="' + response.sellers[key]['path'] + '" class="card-href">' +
+                                    '               <div class="card-body pb-2 justify-content-center card-href">\n' +
+                                    '                   <h5 class="card-title">' + response.sellers[key]['name'] + '</h5>\n' +
+                                    '                </div></a>\n' +
+                                    '        </div>\n' +
+                                    '    </div></a>');
+                            }
+                            $('#modalSeller').modal('show');
+                        },
+                        error: function (error) {
+                            $('#modal-body-cards').html('');
+                            $('#modal-body-cards').append('<p class="h5" style="text-align: center">Извините, но рядом с вами нет магазинов, которые могут вас обслужить.</p>');
+                            $('#modalSeller').modal('show');
+                        }
+                    });
+                });
+                localStorage.clear();
+            });
+        }
+
+        $('#get_location_address').click(() => {
+            let geolocation = ymaps.geolocation
+            geolocation.get({
+                provider: 'yandex',
+                mapStateAutoApply: true
+            }).then(function (result) {
+                $('#geocomplete').val(result.geoObjects.get(0).getAddressLine())
+            })
+        })
+    </script>
+{% endblock %}
+

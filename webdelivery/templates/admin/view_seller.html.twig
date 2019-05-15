@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Аккаунт{% endblock %}
+
+{% block body %}
+    <div class="row" id="row-body">
+        {{ include('admin/admin.menu.html.twig') }}
+        <div class="col">
+            <div class="seller-content">
+                <div class="col-md-4"><strong>Название магазина:</strong> {{ seller.getName() }}</div>
+            </div>
+            <div class="seller-content">
+                <div class="col-md-4"><strong>Адрес магазина:</strong> {{ seller.getAddress() }}</div>
+            </div>
+            <div class="seller-content">
+                <div class="col-md-4">
+                    <strong>Описание магазина:</strong> {{ seller.getDescription() }}
+                </div>
+            </div>
+            <div class="row" style="margin-left: 2px">
+                <div class="col-md-12">
+                    <form action="{{ path('admin_seller_view', { id: seller.getId(), page: thisPage-1 < 1 ? 1 : thisPage-1, search: app.request.get('search')}) }}" method="GET">
+                        <div class="row search-form">
+                            <div class="col-md-11">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="search" value="{{ app.request.get('search') }}" placeholder="Введите название товара">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <button class="btn btn-primary border" type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="profile-wrapper">
+                    <div class="row dashboard-today">
+                        <table class="table">
+                            <caption>Список товаров</caption>
+                            <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Название</th>
+                                <th scope="col">Категория</th>
+                                <th scope="col">Цена</th>
+                                <th scope="col">#</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for product in products %}
+                                <tr id="product-{{ product.getId() }}">
+                                    <th scope="col">{{ product.getId() }}</th>
+                                    <th scope="col">{{ product.getName() }}</th>
+                                    <th scope="col">{{ product.getCategory() }}</th>
+                                    <th scope="col">{{ product.getPrice() }}</th>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('admin_seller_view', {id: seller.getId(), page: thisPage-1 < 1 ? 1 : thisPage-1, search: app.request.get('search'), role: app.request.get('role')}) }}">«</a>
+                                    </li>
+
+                                    {% for i in 1..maxPages %}
+                                        {% if i > 0 %}
+                                            <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                                <a class="page-link" href="{{ path('admin_seller_view', {id: seller.getId(), page: i, search: app.request.get('search'), role: app.request.get('role')}) }}">{{ i }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('admin_seller_view', {id: seller.getId(), page: thisPage+1 <= maxPages ? thisPage+1 : thisPage, search: app.request.get('search'), role: app.request.get('role')}) }}">»</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light mb-3" style="background-color: #f1f1f1;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link but-orange" href="{{ path("index") }}" class="row">
+                    <img class="" width="30px" height="30px" src="{{ asset('img/' ~ 'logo.svg') }}">
+                    <span class="text-logo">Web Delivery</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav justify-content-end account-button">
+            {# Account dropdown #}
+            <li class="nav-item dropdown">
+                <button class="btn nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Aккаунт
+                </button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') != true %}
+                    <a class="dropdown-item" href="{{ path('app_login') }}">
+                        <i class="icon ion-md-log-in"></i> Вход
+                    </a>
+                    <a class="dropdown-item" href="{{ path('app_register') }}">
+                        <i class="icon ion-md-person-add"></i> Регистрация
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('seller_requests_new')}}">
+                        <i class="icon ion-md-briefcase"></i> Стать продавцом</a>
+                {% endif %}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') and (is_granted('ROLE_ADMIN') != true) %}
+                    <a class="dropdown-item" href="{{ path('profile') }}">
+                        <i class="icon ion-md-desktop"></i> Личный кабинет
+                    </a>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="dropdown-item" href="{{ path('admin_dashboard') }}">
+                        <i class="icon ion-md-build"></i> Панель администратора
+                    </a>
+                {% endif %}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('logout') }}">
+                        <i class="icon ion-md-log-out"></i> Выход
+                    </a>
+                {% endif %}
+                </div>
+            </div>
+        </ul>
+    </div>
+</nav>
+

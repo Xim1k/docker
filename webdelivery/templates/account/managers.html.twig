@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}История заказов{% endblock %}
+
+{% block body %}
+<div class="row" id="row-body">
+    {{ include('account/account_menu.html.twig') }}
+    <div class="col">
+        <div class="container-fluid" style="padding: 0;">
+            <div class="profile-wrapper" style="padding: 0;">
+                {% if managers|default(false) != false %}
+                <div class="accordion" id="accordionExample">
+                    {% for item in managers %}
+                    <!-- beginning of the card -->
+                        <div class="card">
+                            <div class="card-header" id="heading{{ item.getId() }}">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" id="btn-{{ item.getId() }}" type="button" data-toggle="collapse" data-target="#collapse{{ item.getId() }}" aria-expanded="true" aria-controls="collapse{{ item.getId() }}">
+                                        {{ item.getLogin() }}
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <!-- Card body start -->
+                            <div id="collapse{{ item.getId() }}" class="collapse" aria-labelledby="heading{{ item.getId() }}" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <!-- Card-content -->
+                                    <div class="manager-request-content">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="manager-request-content-email">
+                                                    <span class="manager-request-label">Email: </span>
+                                                    {{ item.getEmail() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card body end -->
+                            </div>
+                        </div>
+                        <!-- end of the card -->
+                        {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('managers', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                                    </li>
+
+                                    {% for i in 1..maxPages %}
+                                        {% if i > 0 %}
+                                            <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                                <a class="page-link" href="{{ path('managers', {page: i}) }}">{{ i }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('managers', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    {% else %}
+                        <!-- if there is no products -->
+                        <div id="page-content-wrapper">
+                            <div class="container-fluid" style="margin:15px">
+                                <h3>У вас нет менеджеров</h3>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

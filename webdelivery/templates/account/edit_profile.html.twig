@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Смена пароля{% endblock %}
+
+{% block body %}
+
+    <div class="row" id="row-body">
+        {{ include('account/account_menu.html.twig') }}
+        <div class="col">
+            <div class="col-md-12 order-md-1">
+                <h4 class="mb-3">Редактирование профиля</h4>
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">Имя</label>
+                        {{ form_widget(form.name, {'attr': { 'class' : 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Фамилия</label>
+                        {{ form_widget(form.surname, {'attr': { 'class' : 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.login, 'Логин' ) }}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="icon ion-ios-person"></i>
+                        </span>
+                        </div>
+                        {{ form_widget(form.login, {'attr': {'class': 'form-control', 'placeholder': 'Логин'}}) }}
+                    </div>
+                    <div class="mt-1 form-error">
+                        {{ form_errors(form.login, {'attr': {'class': 'invalid-feedback'}}) }}
+                    </div>
+                </div>
+                <button class="btn btn-primary">{{ button_label|default('Сохранить') }}</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

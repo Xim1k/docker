@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Категории{% endblock %}
+
+{% block body %}
+<div class="row" id="row-body">
+    {{ include('admin/admin.menu.html.twig') }}
+    <div class="col">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{{ path('admin_categories') }}" method="GET">
+                    <div class="row search-form">
+                        <div class="col-md-11">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="search" value="{{ app.request.get('search') }}" placeholder="Введите название категории">
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <button class="btn btn-primary border" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="profile-wrapper">
+                <div class="row dashboard-today">
+                    <table class="table">
+                        <caption>Список категорий</caption>
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Название</th>
+                            <th scope="col">#</th>
+                            <th scope="col">#</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr id="category-{{ category.getId() }}">
+                                <th scope="col">{{ category.getId() }}</th>
+                                <th scope="col">{{ category.getName() }}</th>
+                                <th scope="col">
+                                    <a href="{{ path('admin_category_edit', { 'id': category.getId()}) }}">
+                                        <button class="btn btn-primary">
+                                            Изменить
+                                        </button>
+                                    </a>
+                                </th>
+                                <th scope="col">
+                                    <button class="btn btn-danger ajax-delete" data-id="{{ category.getId }}">
+                                        Удалить
+                                    </button>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                                    <a class="page-link" href="{{ path('admin_categories', {page: thisPage-1 < 1 ? 1 : thisPage-1, search: app.request.get('search')}) }}">«</a>
+                                </li>
+
+                                {% for i in 1..maxPages %}
+                                    {% if i > 0 %}
+                                        <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                            <a class="page-link" href="{{ path('admin_categories', {page: i, search: app.request.get('search')}) }}">{{ i }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                    <a class="page-link" href="{{ path('admin_categories', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage, search: app.request.get('search')}) }}">»</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).on('click', '.ajax-delete', function(){
+            if (confirm('Вы уверены') === true)
+            {
+                let id = $(this).data('id');
+                $.ajax({
+                    url:'{{ (path('admin_category_delete')) }}',
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "id": id
+                    },
+                    async: true,
+                    success: function (response)
+                    {
+                        let but = "#category-" + id;
+                        $(but).detach();
+                    },
+                    error: function (error) {
+                        alert(error['message'])
+                    }
+                });
+            }
+        });
+    </script>
+{% endblock %}

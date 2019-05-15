@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}История заказов{% endblock %}
+
+{% block body %}
+<div class="row" id="row-body">
+    {{ include('admin/admin.menu.html.twig') }}
+    <div class="col">
+        <div class="container-fluid" style="padding: 0;">
+            <div class="profile-wrapper" style="padding: 0;">
+                {% if requests|default(false) != false %}
+                <div class="accordion" id="accordionExample">
+                    {% for item in requests %}
+                    <!-- beginning of the card -->
+                    <div class="card">
+                        <div class="card-header" id="heading{{ item.getId() }}">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" id="btn-{{ item.getId() }}" type="button" data-toggle="collapse" data-target="#collapse{{ item.getId() }}" aria-expanded="true" aria-controls="collapse{{ item.getId() }}">
+                                    {{ item.getCompanyName() }}
+                                </button>
+                            </h2>
+                        </div>
+
+                        <!-- Card body start -->
+                        <div id="collapse{{ item.getId() }}" class="collapse" aria-labelledby="heading{{ item.getId() }}" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <!-- Header of the card-content -->
+                                <div class="manager-request-header">
+
+                                </div>
+                                <!-- Card-content -->
+                                <div class="manager-request-content">
+                                    <div class="d-flex">
+                                        <div>
+                                            <div class="manager-request-content-email">
+                                                <span class="manager-request-label">Email:</span>
+                                                {{ item.email }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Products in order -->
+                                    {% if item.getCompanyDescription() %}
+                                        <div class="manager-request-content-resume">
+                                            <div class="manager-request-label">Описание компании:</div>
+                                            {{ item.companyDescription }}
+                                        </div>
+                                    {% endif %}
+                                    {% if item.getCompanyFile() %}
+                                        <div class="manager-request-content-file" id = "manager-request-content-file-{{ item.getId() }}">
+                                            <div class="manager-request-label">Файл:</div>
+                                            <a href="{{ asset('request_doc/') ~ item.getCompanyFile()  }}">
+                                                <button class="btn btn-info">View file</button>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    <div class="manager-request-btn">
+                                        <button type="button" class="btn btn-success ajax-accept seller-request-btn-{{ item.getId() }}" data-id="{{ item.getId() }}">Submit</button>
+                                        <button type="button" class="btn btn-danger ajax-cancel seller-request-btn-{{ item.getId() }}"  data-id="{{ item.getId() }}">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card body end -->
+                        </div>
+                        <!-- end of the card -->
+                    </div>
+                        {% endfor %}
+                    <div class="row">
+                        <div class="col">
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item" {{ thisPage == 1 ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('admin_requests', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                                    </li>
+
+                                    {% for i in 1..maxPages %}
+                                        {% if i > 0 %}
+                                            <li class="page-item {{ thisPage == i ? 'active' }}" >
+                                                <a class="page-link" href="{{ path('admin_requests', {page: i}) }}">{{ i }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li class="page-item" {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                        <a class="page-link" href="{{ path('admin_requests', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    {% else %}
+                        <!-- if there is no products -->
+                        <div id="page-content-wrapper">
+                            <div class="container-fluid" style="margin:15px">
+                                <h3>Нет новых заявок</h3>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script type="text/javascript">
+            // Accept button function
+            $(document).on('click', 'button.ajax-accept', function(){
+                if (confirm('Вы уверены') === true)
+                    {
+                        let id = $(this).data('id');
+                        let btn_id = '#btn-' + id;
+                        //add spinner while waiting for response
+                        $(btn_id).after("<div class=\"spinner-border text-primary\" id=\"spinner-"+ id +"\" role=\"status\">\n" + "<span class=\"sr-only\">Loading...</span>\n" + "</div>");
+                        $.ajax({
+                            url:'{{ (path('admin_requests_submit')) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "id": id
+                            },
+                            async: true,
+                            success: function ()
+                            {
+                                let but_class = '.seller-request-btn-' + id;
+                                let collapse = '#collapse' + id;
+                                let spinner = "#spinner-" + id;
+                                let file = "#seller-request-content-file-" + id;
+                                $(collapse).collapse('hide');
+                                $(spinner).detach();
+                                $(btn_id).after('<span class="badge badge-info order-status">Подтвержден</span>');
+                                $(but_class).each(function () {
+                                    $(this).detach();
+                                });
+                                $(file).detach();
+                            },
+                            error: function (error) {
+                                let spinner = "#spinner-" + id;
+                                $(btn_id).after('<span class="badge badge-danger order-status">Ошибка</span>');
+                                $(spinner).detach();
+                            }
+                        });
+                    }
+            });
+
+            // Cancel button function
+            $(document).on('click', 'button.ajax-cancel', function(){
+                if (confirm('Вы уверены') === true)
+                    {
+                        let id = $(this).data('id');
+                        let btn_id = '#btn-' + id;
+                        //add spinner while waiting for response
+                        $(btn_id).after("<div class=\"spinner-border text-primary\" id=\"spinner-"+ id +"\" role=\"status\">\n" + "<span class=\"sr-only\">Loading...</span>\n" + "</div>");
+                        $.ajax({
+                            url:'{{ (path('admin_requests_cancel')) }}',
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                "id": id
+                            },
+                            async: true,
+                            success: function ()
+                            {
+                                let but_class = '.seller-request-btn-' + id;
+                                let collapse = '#collapse' + id;
+                                let spinner = "#spinner-" + id;
+                                let file = "#seller-request-content-file-" + id;
+                                $(collapse).collapse('hide');
+                                $(spinner).detach();
+                                $(btn_id).after('<span class="badge badge-danger order-status">Отменен</span>');
+                                $(but_class).each(function () {
+                                    $(this).detach();
+                                });
+                                $(file).detach();
+                            },
+                            error: function (error) {
+                                let spinner = "#spinner-" + id;
+                                $(btn_id).after('<span class="badge badge-danger order-status">Ошибка</span>');
+                                $(spinner).detach();
+                            }
+                        });
+                    }
+            });
+        </script>
+    {% endblock %}

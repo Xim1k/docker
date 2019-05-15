@@ -1,0 +1,32 @@
+version: '2'
+services:
+  apache:
+    build: docker/apache
+    container_name: apache
+    ports:
+      - 800:80
+    volumes:
+      - ./docker/config/vhosts:/etc/apache2/sites-enabled
+      - .:/home/www/root
+    depends_on:
+      - php
+
+  mysql:
+    image: mysql:5.5
+    container_name: docker-symfony4-mysql5.5
+    mem_limit: 128m
+    volumes:
+      - ./docker/mysql_data_prod:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=sf4
+      - MYSQL_USER=sf4
+      - MYSQL_PASSWORD=sf4
+
+  php:
+    build: ./docker/php-fpm-7.1.3
+    container_name: sf4_phpp
+    volumes:
+      - .:/home/www/root
+    depends_on:
+      - mysql

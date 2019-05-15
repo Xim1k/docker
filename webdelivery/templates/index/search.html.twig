@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Доставка еды{% endblock %}
+
+
+
+{% block body %}
+    <div class="conteiner">
+        <h2>Поиск продуктов</h2>
+        <form action="?">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-11">
+                         <input type="text" class="form-control"  name="query">
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-">Найти</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <table class="table table-striped">
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td><a href="#">{{ product.name }}</a></td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    {#{{ dump(products) }}#}
+{% endblock %}

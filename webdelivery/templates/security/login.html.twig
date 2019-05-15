@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    {{ include('partials/flashes.html.twig') }}
+        <form method="post" class="form-register shadow-sm">
+            {% if error|default(null) %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <img class="mb-2 align-self-center" width="80px" height="80px" src="{{ asset('img/' ~ 'logo.svg') }}">
+            
+            <h3 class="text-center mb-3">Авторизация</h1>
+            
+            <label for="inputEmail" class="sr-only">Email / Логин</label>
+            <input value="{{ last_username }}" class="form-control" name="email" id="inputEmail"  placeholder="Email / Login" required autofocus>
+            
+            <label for="inputPassword" class="sr-only">Пароль</label>
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
+            
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            
+            <div class="d-flex justify-content-between mb-3 mt-3">
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="_remember_me" id="rememberCheck">
+                    <label class="form-check-label" for="rememberCheck">
+                        Запомнить меня
+                    </label>
+                </div>
+                <a href="#" data-toggle="modal" data-target="#forgot">Забыли пароль?</a>
+            </div>
+            <button class="btn btn-primary btn-block" >Войти</button>
+            <a class="align-self-start mt-3" href="{{ path('app_register') }}">Еще не зарегестрированы?</a>
+        </form>
+    <div class="modal fade forgot-password" id="forgot" tabindex="-1" role="dialog" aria-labelledby="forgotArea" aria-hidden="true">
+        <div class="modal-dialog modal-width-forgot" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mt-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-md-offset-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="text-center">
+                                            <h3><i class="fa fa-lock fa-4x"></i></h3>
+                                            <h2 class="text-center">Забыли пароль?</h2>
+                                            <p>Вы можете восстановить его здесь.</p>
+                                            <div class="panel-body">
+                                                <form id="register-form" role="form" autocomplete="off" class="form error-email" method="post">
+                                                    <p class="error-email-text"></p>
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input id="email_forgot" name="email_forgot" placeholder="Email" class="form-control"  type="email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="forgot-reset" name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Восстановить" type="button">
+                                                    </div>
+
+                                                    <input type="hidden" class="hide" name="token" id="token" value="">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).on('click', '#forgot-reset', function(){
+            let email = $('input#email_forgot').val();
+                $.ajax({
+                    url:'{{ path('app_forgot_password') }}',
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        'email':email
+                    },
+                    async: true,
+                    success: function ()
+                    {
+                        console.log(1);
+                        $('.text-center').html("<i class=\"far fa-check-circle fa-4x\"></i></h3><h2 class=\"text-center\">Ваш пароль отправлен на почту</h2>");
+                    },
+                    error: function (error) {
+                        $('.error-email-text').text('Email не найден');
+                    }
+                });
+        });
+    </script>
+{% endblock %}

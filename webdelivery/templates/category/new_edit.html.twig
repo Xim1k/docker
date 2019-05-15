@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="row" id="row-body">
+        {{ include('admin/admin.menu.html.twig') }}
+        <div class="col">
+            <div class="row">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'col col-md-12 text-center border border-light p-5'}}) }}
+                <div class="form-row col-md-12 d-flex justify-content-center">
+                    <p class="h4 mb-4">{{ title }}</p>
+                </div>
+                <div class="form-row col col-md-12">
+                    <div class="form-error">
+                        {{ form_errors(form.name) }}
+                    </div>
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control mb-4', 'placeholder': 'Имя'}}) }}
+                </div>
+
+                <!-- Send button -->
+                <div class="form-row d-flex justify-content-center">
+                    <button class="col-md-4 btn btn-primary btn-block" type="submit">{{ btn }}</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

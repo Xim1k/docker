@@ -1,0 +1,21 @@
+<div class="modal" role="dialog" id="shopping-cart">
+    <div class="modal-dialog">
+        <div class="modal-content" tabindex="-1">
+            <div class="modal-header">
+                <h5 class="modal-title">Корзина</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="shopping-cart_list">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" id="shopping-cart_clear">Очистить корзину</button>
+                <a href="{{ path("checkout_new") }}" class="btn btn-success" id="shopping-cart_send">
+                    Оформить заказ
+                    <span id="shopping-cart_total">0.00</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

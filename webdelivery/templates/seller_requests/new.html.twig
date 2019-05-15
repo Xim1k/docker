@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Аккаунт{% endblock %}
+
+{% block body %}
+    <div class="row" id="row-body">
+        {{ include('account/account_menu.html.twig') }}
+        <div class="col">
+            <div class="row">
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'col col-md-12 text-center border border-light p-5'}}) }}
+                    <div class="form-row col-md-12 d-flex justify-content-center">
+                        <p class="h4 mb-4">Заявка менеджера в компанию {{ name }}</p>
+                    </div>
+                    <div class="form-row col col-md-12">
+                        <div class="form-error">
+                            {{ form_errors(form.firstName) }}
+                        </div>
+                        {{ form_widget(form.firstName, {'attr': {'class': 'form-control mb-4', 'placeholder': 'Имя'}}) }}
+                    </div>
+                    <div class="form-row col col-md-12">
+                        <div class="form-error">
+                            {{ form_errors(form.lastName) }}
+                        </div>
+                        {{ form_widget(form.lastName, {'attr': {'class': 'form-control mb-4', 'placeholder': 'Фамилия'}}) }}
+                    </div>
+                    <div class="form-row col col-md-12">
+                        <div class="form-error">
+                            {{ form_errors(form.resume) }}
+                        </div>
+                        {{ form_widget(form.resume, {'attr': {'class': 'form-control rounded-0 mb-4', 'placeholder': 'Резюме', 'rows': '15'}}) }}
+                    </div>
+                    <div class="form-row col col-md-12">
+                        <div class="form-error">
+                            {{ form_errors(form.file) }}
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Файл</span>
+                            </div>
+                            <div class="custom-file">
+                                <label class="custom-file-label" >Выбрать файл</label>
+                                {{ form_widget(form.file, {'attr': {'class': 'custom-file-input'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Send button -->
+                    <div class="form-row d-flex justify-content-center">
+                        <button class="col-md-4 btn btn-primary btn-block" type="submit">Отправить</button>
+                    </div>
+                    {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

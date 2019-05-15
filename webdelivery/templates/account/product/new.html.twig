@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новый продукт{% endblock %}
+
+{% block body %}
+<div class="row" id="row-body">
+    {{ include('account/account_menu.html.twig') }}
+    <div class="col-lg-9">
+        <h3>Создать новый продукт</h3>
+        {{ include('account/product/_form.html.twig') }}
+    </div>
+</div>
+{% endblock %}

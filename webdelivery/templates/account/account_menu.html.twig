@@ -1,0 +1,104 @@
+{% set path = path(app.request.attributes.get('_route'),
+    app.request.attributes.get('_route_params')) %}
+
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block"><!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group">
+            <!-- Separator with title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+
+            </li>
+            <!-- /END Separator -->
+            <!-- Menu with submenu -->
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-user fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Аккаунт</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id='submenu2' class="collapse sidebar-submenu">
+                <a href="{{ path('profile') }}" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">Профиль</span>
+                </a>
+                <a href="{{ path('edit_profile') }}" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">Настройки</span>
+                </a>
+                <a href="{{ path('password_edit') }}" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">Смена пароля</span>
+                </a>
+            </div>
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('myhistory') }}" class="bg-light list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Мои заказы</span>
+                    </div>
+                </a>
+                <a href="{{ path('sellers_choice') }}" class="bg-light list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fas fa-user-friends fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Стать менеджером</span>
+                    </div>
+                </a>
+            {% endif %}
+            {% if is_granted("ROLE_SELLER_MAIN") or (is_granted('ROLE_SELLER_MANAGER') == true) %}
+                <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                    Продавец
+                </li>
+                <a href="{{ path('seller_orders') }}" class="bg-light list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-tasks fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Заказы</span>
+                    </div>
+                </a>
+                {% if is_granted("ROLE_SELLER_MAIN") %}
+                <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fas fa-user-friends fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Менеджеры</span>
+                        <span class="submenu-icon ml-auto"></span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div id='submenu1' class="collapse sidebar-submenu">
+                    <a href="{{ path('managers') }}" class="list-group-item list-group-item-action bg-light">
+                        <span class="menu-collapsed">Все менеджеры</span>
+                    </a>
+                    <a href="{{ path('requests') }}" class="list-group-item list-group-item-action bg-light">
+                        <span class="menu-collapsed">Заявки</span>
+                    </a>
+                </div>
+                <a href="#submenu3" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fas fa-shopping-bag fa-fw mr-3"></span>
+                        <span class="menu-collapsed">Товары</span>
+                        <span class="submenu-icon ml-auto"></span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div id='submenu3' class="collapse sidebar-submenu">
+                    <a href="{{ path('seller_product_list') }}" class="list-group-item list-group-item-action bg-light">
+                        <span class="menu-collapsed">Список товаров</span>
+                    </a>
+                    <a href="{{ path('seller_product_new') }}" class="list-group-item list-group-item-action bg-light">
+                        <span class="menu-collapsed">Добавить товар</span>
+                    </a>
+                    <a href="{{ path('importcsv') }}" class="list-group-item list-group-item-action bg-light">
+                        <span class="menu-collapsed">Импорт товаров</span>
+                    </a>
+                </div>
+                {% endif %}
+            {% endif %}
+            <a href="{{ path('logout') }}" class="bg-light list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fas fa-sign-out-alt fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Выйти</span>
+                </div>
+            </a>
+        </ul><!-- List Group END-->
+    </div><!-- sidebar-container END -->
+    </div><!-- Main Col END -->
